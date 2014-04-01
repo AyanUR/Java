@@ -1,0 +1,10 @@
+create schema pharmacy;
+use pharmacy;
+create table medicamento(barcode int not null auto_increment,name char(30) not null,precio int not null,activos char(70) not null,descripcion char(111),primary key(barcode));
+insert into medicamento value(1,'canesten v',100,'clotrimazol','indicado para el tratameinto de la infecciones vajinales');
+insert into medicamento values(2,'broxol',150,'ambroxol','para la tos seca o con flemas');
+insert into medicamento values(3,'febrax',97,'naproxeno/paracetamol','para dolor y temperatura');
+insert into medicamento values(4,'hidex',171,'hierro','hierro');
+insert into medicamento values(5,'linconcin',103,'lincomicina','para el tratamiento de la gripa');
+insert into medicamento values(6,'vermox plus',90,'mebandazal/quinfamida','desparacitario');
+insert into medicamento values(7,'motrin',55,'ibuprofeno','para el dolor y fiebre');
