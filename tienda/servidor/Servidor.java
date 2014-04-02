@@ -11,11 +11,22 @@ public class Servidor extends JFrame{
 	private static Tienda []productos;
 	private static int np=0;
 	private static ObjectOutputStream oos;
-	public Servidor(String title,int row,int column){
+	private static GridBagConstraints gbc;
+	public Servidor(String title){
 		super(title);
-		setLayout(new GridLayout(row,column));
+		setLayout(new GridBagLayout());
 		setSize(400,700);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		gbc=new GridBagConstraints();
+	}
+	public static void configGbc(int row,int column,int numrow,int numcolumn,float py,float px){
+		gbc.gridy=row;
+		gbc.gridx=column;
+		gbc.gridheight=numrow;
+		gbc.gridwidth=numcolumn;
+		gbc.weighty=py;
+		gbc.weightx=px;
+		gbc.fill=GridBagConstraints.BOTH;
 	}
 	public static void selectFiles(){
 		JFileChooser selector=new JFileChooser();
@@ -61,10 +72,11 @@ public class Servidor extends JFrame{
 		Servidor mensajes;
 		
 		port=Integer.parseInt(JOptionPane.showInputDialog(null,"puerto a iniciar la coneccion"));
-		mensajes=new Servidor("area de mesajes servidor",1,1);
+		mensajes=new Servidor("area de mesajes servidor");
 		area=new JTextArea();
 		scroll=new JScrollPane(area);
-		mensajes.add(scroll);
+		configGbc(0,0,1,1,1,1);
+		mensajes.add(scroll,gbc);
 		mensajes.setVisible(true);
 		selectFiles();
 		ingresarProductos();
